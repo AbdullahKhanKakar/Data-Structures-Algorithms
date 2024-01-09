@@ -12,3 +12,7 @@ Linked list and Array both are linear data structures used for storing collectio
 - **Traversal:**
     - **Linked List:** Typically traversed in a sequence from beginning to end.
     - **Array:** Allow random access, we can traversed them in any order.
+
+**Note:**
+- If you work on software that's provide mostly functionality on Inserting and Removing, then use Linked List. It's will work fast than Array.
+- If you work on software that's provide mostly functionality on Accessing items, then use Array. It will work fast than Linked List.
