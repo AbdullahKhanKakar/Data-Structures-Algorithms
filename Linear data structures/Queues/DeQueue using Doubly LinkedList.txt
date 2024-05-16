@@ -1,0 +1,116 @@
+*DeQueue:*
+
+Code:
+
+print("===DeQueue===")
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+    
+class DeQueue:
+    def __init__(self):
+        self.front = None
+        self.rear = None
+        self.size = 0
+    
+    def is_empty(self):
+        return self.front == None
+        
+    def traverse(self):
+        curr = self.front
+        while curr!=self.rear.next:
+            print(curr.data)
+            curr = curr.next
+        
+    def insert_front(self, data):
+        n_node = Node(data)
+        #check if linkedlist is empty
+        if self.is_empty():
+            self.front = n_node
+            self.rear = self.front
+        #if linkedlist is not empty
+        else:
+            n_node.next = self.front
+            self.front.prev = n_node
+            self.front = n_node
+        self.size+=1
+    
+    def insert_rear(self, data):
+        n_node = Node(data)
+        #checks if linkedlist is empty
+        if self.is_empty():
+            self.front = n_node
+            self.rear = self.front
+        else:
+            n_node.prev = self.rear
+            self.rear.next = n_node
+            self.rear = n_node
+        self.size+=1
+    
+    def delete_rear(self):
+        #checks if linkedlist is empty
+        if self.is_empty():
+            print("DeQueue is empty!")
+        #if linkedlist is not empty
+        else:
+            if self.size==1:
+                self.front=None
+                self.rear=None
+            else:
+                self.rear = self.rear.prev
+                self.rear.next = None
+            self.size-=1
+    
+    def delete_front(self):
+        #checks if linkedlist is empty
+        if self.is_empty():
+            print("DeQueue is empty1")
+        #if linekdlist is not empty
+        else:
+            if self.size==1:
+                self.front=None
+                self.rear=None
+            else:
+                self.front = self.front.next
+                self.front.prev = None
+            self.size-=1
+    
+    def front_value(self):
+        if self.is_empty():
+            print("DeQueue is empty!")
+        else:
+            print(f"Front ==> {self.front.data}")
+    
+    def rear_value(self):
+        if self.is_empty():
+            print("DeQueue is empty!")
+        else:
+            print(f"Rear ==> {self.rear.data}")
+            
+    def Size(self):
+        print(f"Length ==> {self.size}")
+        
+#testing
+dq = DeQueue()
+#insert items
+dq.insert_front(3)
+dq.insert_front(2)
+dq.insert_front(1)
+dq.insert_front(-1)
+dq.insert_rear(4)
+dq.insert_rear(5)
+dq.insert_rear(6)
+dq.insert_rear(-1)
+#delete items
+dq.delete_front()
+dq.delete_rear()
+#print length of linkedlist
+dq.Size()
+#traver
+dq.traverse()
+#front
+dq.front_value()
+#rear
+dq.rear_value()
